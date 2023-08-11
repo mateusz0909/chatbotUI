@@ -34,7 +34,7 @@ class BobChat:
                 margin-right: auto;
                 width: 50%;
                 margin-bottom: 3em;
-                border-bottom: 1px solid grey;
+                border-bottom: 2px solid white;
             }
             .stChatMessage {
                 background-color: #ffbd4529;
