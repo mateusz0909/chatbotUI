@@ -8,6 +8,25 @@ PASSWORD = 'password'
 # Categories
 CATEGORIES = ['Baby Care', 'Supplements', 'Vaccines', 'Oral Care', 'Pet Care']
 
+col1, col2, col3 = st.columns([1,2,1])
+css = st.markdown('''
+            <style>
+            img {
+                margin: auto;
+                position: relative;
+                left: 50%;
+                top: 50%
+            }
+             .stChatMessage {
+                background-color: #ffbd4529
+            }
+            .stChatMessage:nth-child(2n) {
+                background-color: #ff004412
+            }
+           
+            </style>
+        ''', unsafe_allow_html=True)
+
 def login() -> object:
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
@@ -131,7 +150,13 @@ if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
 if st.session_state.logged_in:
+    with col2:
+        st.image('logo.png', width=150)
+
     main_app()
 else:
+    with col2:
+        st.image('logo.png', width=150)
+        
     st.title("Login")
     login()
