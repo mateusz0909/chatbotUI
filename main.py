@@ -62,7 +62,7 @@ class AIChat:
         st.title("1. Select Category")
         category = st.selectbox('Select from the list:', self.CATEGORIES)
 
-        st.title('2. Ask AI')
+        st.title('2. Ask AI ✨')
 
         chat_container = st.container()
 
