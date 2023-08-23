@@ -3,7 +3,7 @@ import streamlit as st
 import time
 import os
 import re
-HJ_JS = ''' 
+hotjar_js = ''' 
       <script>(function(h,o,t,j,a,r){
             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
             h._hjSettings={hjid:3622877,hjsv:6};
@@ -14,15 +14,8 @@ HJ_JS = '''
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
         console.log("Hotjar injected!")</script>
     '''
-a = os.path.dirname(st.__file__) + '/static/index.html'
-with open(a, 'r') as f:
-    data = f.read()
-    if len(re.findall('hotjar-', data)) == 0:
-        print('hotjar string found')
-        with open(a, 'w') as ff:
-            newdata = re.sub('<head>', '<head>' + HJ_JS, data)
-            ff.write(newdata)
 
+st.components.v1.html(hotjar_js)
 class AIChat:
     USERNAME = 'user'
     PASSWORD = '1234'
