@@ -1,9 +1,8 @@
 import streamlit as st
 import time
-
 import streamlit_analytics
 
-# hotjar_js = '''
+# hotjar_js = ''s'
 #       <script>
 #     (function(h,o,t,j,a,r){
 #         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
