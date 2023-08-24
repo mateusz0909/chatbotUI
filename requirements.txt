@@ -1,1 +1,2 @@
-streamlit_analytics==0.4.1
+streamlit
+streamlit_analytics
