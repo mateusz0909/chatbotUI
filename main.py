@@ -1,6 +1,7 @@
 import streamlit as st
+import streamlit_analytics
 import time
-# import streamlit_analytics
+
 
 # hotjar_js = ''s'
 #       <script>
@@ -177,5 +178,5 @@ class AIChat:
 
 
 if __name__ == "__main__":
-    # with streamlit_analytics.track(unsafe_password="bng1234"):
+    with streamlit_analytics.track(unsafe_password="bng1234"):
         app = AIChat()
