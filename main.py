@@ -1,28 +1,31 @@
-
 import streamlit as st
 import time
 import os
 import re
-hotjar_js = ''' 
-      <script>(function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:3622877,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-        console.log("Hotjar injected!")</script>
-    '''
+import streamlit_analytics
 
+hotjar_js = ''' 
+      <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3625184,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+    '''
 st.components.v1.html(hotjar_js)
+
+
 class AIChat:
     USERNAME = 'user'
     PASSWORD = '1234'
     CATEGORIES = ['Baby Care', 'Supplements', 'Vaccines', 'Oral Care', 'Pet Care']
 
     def __init__(self):
-        col1, col2, col3 = st.columns([1,2,1])
+        col1, col2, col3 = st.columns([1, 2, 1])
         self.css()
         if 'logged_in' not in st.session_state:
             st.session_state['logged_in'] = False
@@ -69,7 +72,8 @@ class AIChat:
             return
         else:
             st.error("Invalid credentials")
-#main app
+
+    # main app
     def main_app(self):
         st.title("1. Select Category")
         category = st.selectbox('Select from the list:', self.CATEGORIES)
@@ -173,5 +177,7 @@ class AIChat:
                                 time.sleep(3)
                                 st.write(response)
 
+
 if __name__ == "__main__":
-    app = AIChat()
+    with streamlit_analytics.track(unsafe_password="bng1234"):
+        app = AIChat()
